@@ -31,7 +31,7 @@ body {
 
 .title {
     padding: 20px;
-    color: #F59E0B;
+    color: #8b7355;
     font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-style: normal;
@@ -55,7 +55,8 @@ body {
 }
 /* Bingo Tiles*/
 .tile {
-    outline: 1px solid red;
+    position: relative;
+    outline: 1px solid #8b7355;
     width: 96px;
     height: 96px;
     border-radius: 8px;
@@ -67,12 +68,12 @@ body {
     cursor: pointer;
 }
 
+
 /* Button to Pick a Random Tile*/
 .randomize {
-    fill: #660066;
     position: absolute;
     right: 45%;
-    top: 93%;
+    top: 92%;
     transform:scale(1.8);
     border-radius: 8px;
 }
@@ -97,16 +98,29 @@ button {
     }
 }
 
-.randomize:hover svg{
-    animation: rainbow 1.2s linear infinite;
-    transform: scale(1.8);
-    transition: transform 0.2s ease;
+.randomize:hover img{
+    animation: spin-flash 2s linear infinite;
 }
 
-@keyframes rainbow {
-    0%   { fill: purple; }
-    25%  { fill: white; }
-    50%  { fill: pink; }
-    75%  { fill: cyan; }
-    100% { fill: purple; }
+@keyframes spin-flash {
+    0% {
+        transform: rotate(0deg) scale(1);
+        filter: hue-rotate(0deg) saturate(150%);
+    }
+    25% {
+        transform: rotate(90deg) scale(1.1);
+        filter: hue-rotate(90deg) saturate(200%);
+    }
+    50% {
+        transform: rotate(180deg) scale(1);
+        filter: hue-rotate(180deg) saturate(150%);
+    }
+    75% {
+        transform: rotate(270deg) scale(1.1);
+        filter: hue-rotate(270deg) saturate(200%);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+        filter: hue-rotate(360deg) saturate(150%);
+    }
 }
