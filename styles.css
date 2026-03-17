@@ -1,0 +1,112 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+body {
+    background-image: url("images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Bingo Board*/
+.container {
+    width: 600px;
+    height: 800px;
+    border: 3px solid #8b7355;
+    border-radius: 8px;
+    position: relative;
+    text-align: center;
+    background-color: #2d2d2db3;
+}
+
+.title {
+    padding: 20px;
+    color: #F59E0B;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* Button to Shuffle Board*/
+.shuffle {
+    position: absolute;
+    right: 20px;
+    top: 14%;
+    scale: 1.2;
+}
+
+/* Tile Grid*/
+.wrapper {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+
+}
+/* Bingo Tiles*/
+.tile {
+    outline: 1px solid red;
+    width: 96px;
+    height: 96px;
+    border-radius: 8px;
+    display: flex;           
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;        /* prevents images from spilling out */
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Button to Pick a Random Tile*/
+.randomize {
+    fill: #660066;
+    position: absolute;
+    right: 45%;
+    top: 93%;
+    transform:scale(1.8);
+    border-radius: 8px;
+}
+
+button {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.shuffle:hover svg{
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(360deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.randomize:hover svg{
+    animation: rainbow 1.2s linear infinite;
+    transform: scale(1.8);
+    transition: transform 0.2s ease;
+}
+
+@keyframes rainbow {
+    0%   { fill: purple; }
+    25%  { fill: white; }
+    50%  { fill: pink; }
+    75%  { fill: cyan; }
+    100% { fill: purple; }
+}
