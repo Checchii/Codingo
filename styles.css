@@ -37,6 +37,7 @@ body {
     font-style: normal;
 }
 
+
 /* Button to Shuffle Board*/
 .shuffle {
     position: absolute;
@@ -66,6 +67,86 @@ body {
     overflow: hidden;        /* prevents images from spilling out */
     background-color: #fff;
     cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.tile:hover:not(.active) {
+    transform: scale(1.1);
+}
+
+/* Tile Front Image*/
+.challenge-icon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+/* Tile Back Details */
+.challenge-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    /* hide by default */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+    /* flip back face, but do NOT rotate it */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+}
+
+.challenge-details p {
+    font-size: 10px;
+}
+
+/* Active State */
+.tile.active {
+    transform: rotateY(-180deg) scale(2);
+    z-index: 10;
+}
+
+.tile.active .challenge-icon {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.tile.active .challenge-details {
+    opacity: 1;
+    visibility: visible;
+    z-index: 999;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.chips-container {
+    position: absolute;
+    bottom: 20px; /* stick to bottom of tile */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    pointer-events: none; /* so clicks go through to tile */
+}
+
+.chip-image {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 1px;
+}
+
+/* Scale chips when tile is active */
+.tile.active .chip-image {
+    transform: scale(1.3); /* scales up when tile opens */
 }
 
 
